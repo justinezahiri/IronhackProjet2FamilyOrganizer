@@ -10,16 +10,16 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 // Login 
-router.get("/login", (req, res, next) => {
-  res.render("auth/login", { "message": req.flash("error") });
-});
+// router.get("/login", (req, res, next) => {
+//   res.render("auth/login", { "message": req.flash("error") });
+// });
 
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "/auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
+// router.post("/login", passport.authenticate("local", {
+//   successRedirect: "/",
+//   failureRedirect: "/auth/login",
+//   failureFlash: true,
+//   passReqToCallback: true
+// }));
 
 // SignUp
 router.get("/signup", (req, res, next) => {
@@ -28,17 +28,19 @@ router.get("/signup", (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
-  const password = req.body.password;
   const email = req.body.email;
+  const password = req.body.password;
   if(username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
   }
+  const role = req.body.role;
+  const color = req.body.color
 
   // create new user 
-  User.findOne({ username }, "username", (err, user) => {
-    if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+  User.findOne({ email }, "email", (err, user) => {
+    if (email !== null) {
+      res.render("auth/signup", { message: "The email already exists" });
       return;
     }
 
@@ -47,14 +49,15 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
+      email,
       password: hashPass,
-      confirmationCode,
-      email
+      role,
+      color
     });
 
     newUser.save()
     .then(() => {
-      // user is now persisted into DB, let's send him a confirmation email
+      // user is now persisted into DB, let's send him a welcome email
       let { email, subject, message } = req.body;
       let transporter = nodemailer.createTransport({
         service: 'outlook',
@@ -66,9 +69,9 @@ router.post("/signup", (req, res, next) => {
       transporter.sendMail({
         from: '"Justar 👻" <justar2019@outlook.fr>',
         to: email, 
-        subject: "please confirm your account", 
-        text: message,
-        html: `<b>http://localhost:3000/auth/confirm/${confirmationCode}</b>`
+        subject: "Welcome to My Tribe", 
+        text: welcome,
+        html: `<b>http://localhost:3000/auth/login</b>`
       })
       .then(message=> {
         res.send('ok email')
@@ -98,8 +101,8 @@ router.post('/message', (req, res, next) => {
     transporter.sendMail({
       from: '"Justar 👻" <justar2019@outlook.fr>',
       to: email, 
-      subject: subject, 
-      text: message,
+      subject: "Welcome to My Tribe", 
+      text: "Welcome to My Tribe",
       html: `<b>${message}</b>`
     })
     .then(message=> res.render('auth/message', {email, subject, message}))

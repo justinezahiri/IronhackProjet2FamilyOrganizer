@@ -8,7 +8,7 @@ const userSchema = new Schema({
     unique: true,
     match: /^.+@.+\..+$/
 },
-  // encrypted password: String,
+  password: String,
   role: Boolean,
   color: String,
   tribe: [ { type: Schema.Types.ObjectId, ref: 'Tribe' } ],
