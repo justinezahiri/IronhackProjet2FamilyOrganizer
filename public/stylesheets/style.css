@@ -1,3 +1,4 @@
+@charset "UTF-8";
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
@@ -5,146 +6,123 @@ body {
   bouton signup :grey;
   bouton login: #6495ED;
 */
-
-*{
-  font-family: Century Gothic;
-}
+* {
+  font-family: Century Gothic; }
 
 /* ------------ BARRE DE NAVIGATION ------------*/
-
-.nav-bar{
+.nav-bar {
   display: flex;
   flex-direction: row;
-  justify-content:space-between;
-  background:orange;
-  height:70px;
-  align-items: center;
-}
+  justify-content: space-between;
+  background: orange;
+  height: 70px;
+  align-items: center; }
 
-.nav-bar-left{
+.nav-bar-left {
   list-style-type: none;
   color: white;
   font-size: 40px;
   text-decoration: none;
-  padding-left:50px;
-  font-weight:bold;
-  text-align: center;
-}
+  padding-left: 50px;
+  font-weight: bold;
+  text-align: center; }
 
-.nav-bar-right{
-  width:400px;
+.nav-bar-right {
+  width: 400px;
   display: flex;
   flex-direction: row;
-  justify-content:space-around;
-  align-items: center;
-}
+  justify-content: space-around;
+  align-items: center; }
 
-.nav-bar-right li{
-  list-style-type: none;
-}
+.nav-bar-right li {
+  list-style-type: none; }
 
-.nav-bar-right a{
+.nav-bar-right a {
   list-style-type: none;
   color: white;
   font-size: 2em;
   text-decoration: none;
-  font-weight:bold;
-}
+  font-weight: bold; }
 
 /* ------------- VIEW INDEX ----------------*/
-
 /* --Texte de présentation--*/
-
-.intro h1{
+.intro h1 {
   text-align: center;
-  padding-top:50px;
-  padding-bottom:10px;
-  font-size: 2em;
-}
+  padding-top: 50px;
+  padding-bottom: 10px;
+  font-size: 2em; }
 
 /* --Images--*/
-
-.images-line-1{
-  background-image:url(../images/famille-groupe1.jpg);
-  background-repeat:no-repeat;
+.images-line-1 {
+  background-image: url(../images/famille-groupe1.jpg);
+  background-repeat: no-repeat;
   background-size: 70%;
   height: 150px;
-  background-position:center;
-  margin:0;
-}
+  background-position: center;
+  margin: 0; }
 
-.images-line-2{
+.images-line-2 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
-}
+  align-items: center; }
 
-.image-family2{
-  background-image:url(../images/family8.png);
-  background-repeat:no-repeat;
+.image-family2 {
+  background-image: url(../images/family8.png);
+  background-repeat: no-repeat;
   height: 100px;
-  width:120px;
-  background-position:center;
-}
+  width: 120px;
+  background-position: center; }
 
-.image-family3{
-  background-image:url(../images/family9.png);
-  background-repeat:no-repeat;
+.image-family3 {
+  background-image: url(../images/family9.png);
+  background-repeat: no-repeat;
   height: 100px;
-  width:120px;
-  background-position:center;
-}
+  width: 120px;
+  background-position: center; }
 
-.image-family4{
-  background-image:url(../images/family10.png);
-  background-repeat:no-repeat;
+.image-family4 {
+  background-image: url(../images/family10.png);
+  background-repeat: no-repeat;
   height: 100px;
-  width:120px;
-  background-position:center;
-}
+  width: 120px;
+  background-position: center; }
 
 /* --Boutons LOGIN et SIGNUP--*/
-
-.link-btn a{
-  display:block;
-  width:100px;
-  Margin-top: 40px; 
-  margin-right: 20px; 
-  margin-bottom: 0; 
+.link-btn a {
+  display: block;
+  width: 100px;
+  Margin-top: 40px;
+  margin-right: 20px;
+  margin-bottom: 0;
   margin-left: 20px;
-  padding-top: 14px; 
-  padding-right: 20px; 
-  padding-bottom: 14px; 
+  padding-top: 14px;
+  padding-right: 20px;
+  padding-bottom: 14px;
   padding-left: 20px;
   text-decoration: none;
-  color:white;
-  -moz-border-radius:7px;
-  -webkit-border-radius:7px;
-  border-radius:10px;
+  color: white;
+  -moz-border-radius: 7px;
+  -webkit-border-radius: 7px;
+  border-radius: 10px;
   box-shadow: -1px 4px 8px 1px rgba(0, 0, 0, 0.7);
-  text-align:center;
-  font-weight:bold;
-  font-size: 20px;
-}
+  text-align: center;
+  font-weight: bold;
+  font-size: 20px; }
 
-.signup{
-  background-color:grey;
-}
+.signup {
+  background-color: grey; }
 
-.login{
-  background-color:#6495ED;
-}
+.login {
+  background-color: #6495ED; }
 
-.link-btn{
+.link-btn {
   display: flex;
   flex-direction: row;
-  justify-content:center;
-  height:70px;
-  align-items: center;
-}
-
+  justify-content: center;
+  height: 70px;
+  align-items: center; }
 
 /*# sourceMappingURL=style.css.map */
 
-
+/*# sourceMappingURL=style.css.map */
