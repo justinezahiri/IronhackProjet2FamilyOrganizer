@@ -1,0 +1,29 @@
+<h2>Your Tribe</h2>
+
+<form action="/createTribe" method="POST">
+  
+  <label for="name">Name</label>
+  <input id="name" type="text" name="name" placeholder="My Tribe">
+  
+  <br><br>
+  
+  <!--ADD A MEMBER-->
+  <div class="members">
+    <label>
+      Add Member
+      <input type="text" name="members[]" placeholder="name1">
+    </label>
+
+    <label>
+      Add Member
+      <input type="text" name="members[]" placeholder="name2">
+    </label>
+
+    
+  </div>
+  <a href="javascript:void 0;" id="add-member">add another</a>
+
+  <p>
+    <button>Create my tribe</button>
+  </p>
+</form>
