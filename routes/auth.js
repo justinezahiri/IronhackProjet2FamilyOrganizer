@@ -6,20 +6,33 @@ const nodemailer = require("nodemailer");
 
 
 // Bcrypt to encrypt passwords
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt-nodejs");
 const bcryptSalt = 10;
 
-// Login 
-// router.get("/login", (req, res, next) => {
-//   res.render("auth/login", { "message": req.flash("error") });
-// });
 
-// router.post("/login", passport.authenticate("local", {
-//   successRedirect: "/",
-//   failureRedirect: "/auth/login",
-//   failureFlash: true,
-//   passReqToCallback: true
-// }));
+// ROUTE LOGIN 
+router.get("/login", (req, res, next) => {
+  res.render("auth/login");
+});
+
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/",
+  failureRedirect: "auth/login",
+  failureFlash: true,
+  passReqToCallback: true
+}));
+
+// ROUTE VERS PROFIL ID
+  router.get('/login/:id', (req, res, next) => {
+    let id = req.params.id;
+    User.findOne({'_id': id})
+      .then(user => {
+        res.render("auth/id", { user })
+      })
+      .catch(error => {
+        console.log(error)
+      })
+  });
 
 // SignUp
 router.get("/signup", (req, res, next) => {
@@ -131,6 +144,11 @@ router.post('/message', (req, res, next) => {
     }))
     .catch(error => console.log(error));
 });
+
+
+
+
+
 
 router.get("/logout", (req, res) => {
   req.logout();

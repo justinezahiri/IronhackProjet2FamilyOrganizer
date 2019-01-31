@@ -11,7 +11,7 @@ const path         = require('path');
 
 
 mongoose
-  .connect('mongodb://localhost/ironhackprojet2familyorganizer', {useNewUrlParser: true})
+  .connect('mongodb://localhost/mytribe', {useNewUrlParser: true})
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
   })
@@ -27,7 +27,7 @@ const app = express();
 // Middleware Setup
 app.use(logger('dev'));
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 // Express View engine setup
@@ -57,5 +57,7 @@ app.use('/', index);
 const authRoutes = require('./routes/auth');
 app.use('/', authRoutes);
 
+const tribe = require('./routes/tribe');
+app.use('/', tribe);
 
 module.exports = app;
