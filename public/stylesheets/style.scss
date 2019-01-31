@@ -154,6 +154,16 @@ h1 {
   margin: 0 auto 40px;
   font-size: 42px;
 }
+
+.form-control {
+  height: 10px;
+  border-radius: 3px;
+  border: 1px solid #d4d6d8;
+  padding: 7px 16px;
+  box-shadow: none;
+  font-size: 16px;
+  line-height: 24px;
+
 @media (max-width: 767px) {
   h1 {
     width: auto;

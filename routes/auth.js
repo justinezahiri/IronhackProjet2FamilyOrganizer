@@ -6,7 +6,7 @@ const nodemailer = require("nodemailer");
 
 
 // Bcrypt to encrypt passwords
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
