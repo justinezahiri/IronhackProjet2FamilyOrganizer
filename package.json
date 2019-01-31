@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "DEBUG=ironhackprojet2familyorganizer:* nodemon ./bin/www",
+    "dev": "DEBUG=ironhackprojet2familyorganizer:* nodemon --inspect ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
@@ -21,7 +21,7 @@
     "morgan": "^1.9.0",
     "node-sass-middleware": "^0.11.0",
     "serve-favicon": "^2.5.0",
-    "bcrypt-nodejs": "0.0.3",
+    "bcrypt": "^3.0.0",
     "nodemailer": "^5.1.1",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0"
