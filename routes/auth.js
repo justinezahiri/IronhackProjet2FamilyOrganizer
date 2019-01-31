@@ -10,29 +10,19 @@ const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
-// ROUTE LOGIN 
-router.get("/login", (req, res, next) => {
-  res.render("auth/login");
-});
+// // ROUTE LOGIN 
+// router.get("/login", (req, res, next) => {
+//   res.render("auth/login");
+// });
 
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
+// router.post("/login", passport.authenticate("local", {
+//   successRedirect: "/",
+//   failureRedirect: "auth/login",
+//   failureFlash: true,
+//   passReqToCallback: true
+// }));
 
-// ROUTE VERS PROFIL ID
-  router.get('/login/:id', (req, res, next) => {
-    let id = req.params.id;
-    User.findOne({'_id': id})
-      .then(user => {
-        res.render("auth/id", { user })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  });
+
 
 // SignUp
 router.get("/signup", (req, res, next) => {
@@ -155,5 +145,16 @@ router.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
+// // ROUTE VERS PROFIL ID
+// router.get('/login/:_id', (req, res, next) => {
+//   let id = req.params._id;
+//   User.findOne({'_id': id})
+//     .then(user => {
+//       res.render("auth/id", { user })
+//     })
+//     .catch(error => {
+//       console.log(error)
+//     })
+// });
 
 module.exports = router;
