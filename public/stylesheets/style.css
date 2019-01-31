@@ -264,27 +264,6 @@ h3 {
 body.sitenav .modal-backdrop {
   opacity: 0.1; }
 
-.image-family2 {
-  background-image: url(../images/family8.png);
-  background-repeat: no-repeat;
-  height: 100px;
-  width: 120px;
-  background-position: center; }
-
-.image-family3 {
-  background-image: url(../images/family9.png);
-  background-repeat: no-repeat;
-  height: 100px;
-  width: 120px;
-  background-position: center; }
-
-.image-family4 {
-  background-image: url(../images/family10.png);
-  background-repeat: no-repeat;
-  height: 100px;
-  width: 120px;
-  background-position: center; }
-
 /* --Boutons LOGIN et SIGNUP--*/
 .link-btn a {
   display: block;
