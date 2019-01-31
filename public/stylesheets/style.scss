@@ -28,16 +28,14 @@ section.hero p {
   display: none;
 }
 .logo {    
-	background-image:none!important;
-	color: white;
+    background-image:none!important;
+    color: white;
     text-transform: uppercase;
     text-align: center;
     display: block;
     margin: auto;
-	font-size:30px;
-	width:260px!important;}
-
-
+    font-size:30px;
+    width:260px!important;}
 @media (max-width: 767px) {
   section.hero p {
     display: block;
@@ -142,7 +140,6 @@ section.families .btn-login {
     margin-top: 0;
   }
 }
-
 @media (max-width: 767px) {
   section.feed > .container > div > div.post {
     margin: 0 0 16px;
@@ -154,16 +151,6 @@ h1 {
   margin: 0 auto 40px;
   font-size: 42px;
 }
-
-.form-control {
-  height: 10px;
-  border-radius: 3px;
-  border: 1px solid #d4d6d8;
-  padding: 7px 16px;
-  box-shadow: none;
-  font-size: 16px;
-  line-height: 24px;
-
 @media (max-width: 767px) {
   h1 {
     width: auto;
@@ -244,13 +231,12 @@ h3 {
     padding: 8px;
   }
 }
-
 @media (min-width: 768px) {
   .navbar {
     padding-top: 16px;
     padding-bottom: 16px;
     box-shadow: none;
-	background-color: #e88f53;
+    background-color: #e88f53;
   }
 }
 @media (max-width: 767px) {
@@ -258,8 +244,8 @@ h3 {
     z-index: 1010;
   }
   .navbar .logo {
-	  float:none;
-	  height:auto;
+      float:none;
+      height:auto;
   }
 }
 @media (min-width: 768px) {
@@ -303,72 +289,4 @@ h3 {
 body.sitenav .modal-backdrop {
   opacity: 0.1;
 }
-
-.image-family2{
-  background-image:url(../images/family8.png);
-  background-repeat:no-repeat;
-  height: 100px;
-  width:120px;
-  background-position:center;
-}
-
-.image-family3{
-  background-image:url(../images/family9.png);
-  background-repeat:no-repeat;
-  height: 100px;
-  width:120px;
-  background-position:center;
-}
-
-.image-family4{
-  background-image:url(../images/family10.png);
-  background-repeat:no-repeat;
-  height: 100px;
-  width:120px;
-  background-position:center;
-}
-
-/* --Boutons LOGIN et SIGNUP--*/
-
-.link-btn a{
-  display:block;
-  width:100px;
-  Margin-top: 40px; 
-  margin-right: 20px; 
-  margin-bottom: 0; 
-  margin-left: 20px;
-  padding-top: 14px; 
-  padding-right: 20px; 
-  padding-bottom: 14px; 
-  padding-left: 20px;
-  text-decoration: none;
-  color:white;
-  -moz-border-radius:7px;
-  -webkit-border-radius:7px;
-  border-radius:10px;
-  box-shadow: -1px 4px 8px 1px rgba(0, 0, 0, 0.7);
-  text-align:center;
-  font-weight:bold;
-  font-size: 20px;
-}
-
-.signup{
-  background-color:grey;
-}
-
-.login{
-  background-color:#6495ED;
-}
-
-.link-btn{
-  display: flex;
-  flex-direction: row;
-  justify-content:center;
-  height:70px;
-  align-items: center;
-}
-
-
-/*# sourceMappingURL=style.css.map */
-
 
