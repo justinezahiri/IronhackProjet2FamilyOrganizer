@@ -7,7 +7,6 @@ const taskSchema = new Schema({
   assignedTo: [ { type: Schema.Types.ObjectId, ref: 'User' } ],
   createdBy: [ { type: Schema.Types.ObjectId, ref: 'User' } ],
   date: Date,
-  heure: Date,
   status: {
     type: String,
     enum: ['To do','Doing', 'Done'],

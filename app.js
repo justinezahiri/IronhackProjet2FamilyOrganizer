@@ -134,4 +134,14 @@ app.use(function (err, req, res, next) {
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
 
+// App Routes 
+const index = require('./routes/index');
+app.use('/', index);
+
+const authRoutes = require('./routes/auth');
+app.use('/', authRoutes);
+
+const tribe = require('./routes/tribe');
+app.use('/', tribe);
+
 module.exports = app;
