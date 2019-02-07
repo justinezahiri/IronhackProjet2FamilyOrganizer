@@ -7,8 +7,10 @@ const Tribe         = require('../models/Tribe');
 router.get('/tribe', (req, res, next) => {
   res.render('tribe');
 });
+
+//TODO: changer members par emails + envoyer un email d'invitation 
 router.post('/createTribe', (req, res, next) => { 
-  const { name, members } = req.body;
+  const { name } = req.body;
   //TODO: lier la famille au User 
   // console.log('members===', members);
   
