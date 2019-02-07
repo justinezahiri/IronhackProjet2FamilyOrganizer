@@ -7,6 +7,7 @@ const Tribe         = require('../models/Tribe');
 router.get('/tribe', (req, res, next) => {
   res.render('tribe');
 });
+
 router.post('/createTribe', (req, res, next) => { 
   const { name, members } = req.body;
   
