@@ -9,8 +9,8 @@ router.get('/tribe', (req, res, next) => {
 });
 router.post('/createTribe', (req, res, next) => { 
   const { name, members } = req.body;
-  
-  console.log('members===', members);
+  //TODO: lier la famille au User 
+  // console.log('members===', members);
   
   const newTribe = new Tribe ({ name, members })
   newTribe.save()
