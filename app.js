@@ -27,7 +27,7 @@ mongoose
 
 // passportJS
 const session = require("express-session"); // Creates a session middleware with the given options
-const bcrypt = require("bcrypt-nodejs"); // bcrypt is a password hashing function
+const bcrypt = require("bcrypt"); // bcrypt is a password hashing function
 const passport = require("passport"); // express-compatible authentication middleware for Node.js.
 const LocalStrategy = require("passport-local").Strategy; // Module that lets you authenticate using a username and password in your Node.js applications.
 const ensureLogin = require("connect-ensure-login"); // Middleware to ensure that a user is logged in
@@ -133,15 +133,5 @@ app.use(function (err, req, res, next) {
 
 // default value for title local
 app.locals.title = 'Express - Generated with IronGenerator';
-
-// App Routes 
-const index = require('./routes/index');
-app.use('/', index);
-
-const authRoutes = require('./routes/auth');
-app.use('/', authRoutes);
-
-const tribe = require('./routes/tribe');
-app.use('/', tribe);
 
 module.exports = app;
