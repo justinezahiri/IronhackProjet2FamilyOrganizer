@@ -4,23 +4,13 @@ const router = express.Router();
 const User = require("../models/User");
 const nodemailer = require("nodemailer");
 
+// Pour LOGIN
+const ensureLogin = require("connect-ensure-login");
+
 
 // Bcrypt to encrypt passwords
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt-nodejs");
 const bcryptSalt = 10;
-
-
-// // ROUTE LOGIN 
-// router.get("/login", (req, res, next) => {
-//   res.render("auth/login");
-// });
-
-// router.post("/login", passport.authenticate("local", {
-//   successRedirect: "/",
-//   failureRedirect: "auth/login",
-//   failureFlash: true,
-//   passReqToCallback: true
-// }));
 
 
 
@@ -137,12 +127,28 @@ router.post('/message', (req, res, next) => {
 
 
 
+// ROUTE LOGIN 
+router.get("/login", (req, res, next) => {
+  res.render("auth/login");
+});
+
+
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/dashboard",
+  failureRedirect: "/login",
+  failureFlash: true,
+  passReqToCallback: true
+}));
+
+router.get("/dashboard", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("auth/dashboard", { user: req.user });
+});
 
 
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("/login");
 });
 
 // // ROUTE VERS PROFIL ID
