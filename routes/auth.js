@@ -9,7 +9,7 @@ const ensureLogin = require("connect-ensure-login");
 
 
 // Bcrypt to encrypt passwords
-const bcrypt = require("bcrypt-nodejs");
+const bcrypt = require("bcrypt");
 const bcryptSalt = 10;
 
 
@@ -75,11 +75,13 @@ router.post("/signup", (req, res, next) => {
             to: email,
             subject: "Welcome to My Tribe",
             text: "welcome",
-            html: `<b>http://localhost:3000/auth/login</b>`
+            html: `Welcome to My Tribe, you have successfully created your account! <br> </br>
+          You can login there: 
+            <b>http://localhost:3000/login</b>`
           })
           .then(message => {
             console.log('ok email')
-            res.render('auth/message', {
+            res.render('tribe', {
               email
             })
           })
@@ -150,17 +152,5 @@ router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/login");
 });
-
-// // ROUTE VERS PROFIL ID
-// router.get('/login/:_id', (req, res, next) => {
-//   let id = req.params._id;
-//   User.findOne({'_id': id})
-//     .then(user => {
-//       res.render("auth/id", { user })
-//     })
-//     .catch(error => {
-//       console.log(error)
-//     })
-// });
 
 module.exports = router;
