@@ -4,10 +4,9 @@ const Schema   = mongoose.Schema;
 const taskSchema = new Schema({
   task: String,
   description: String,
-  assignedTo: [ { type: Schema.Types.ObjectId, ref: 'User' } ],
-  createdBy: [ { type: Schema.Types.ObjectId, ref: 'User' } ],
+  assignedTo: { type: Schema.Types.ObjectId, ref: 'User' },
+  createdBy: { type: Schema.Types.ObjectId, ref: 'User' },
   date: Date,
-  heure: Date,
   status: {
     type: String,
     enum: ['To do','Doing', 'Done'],
@@ -15,5 +14,5 @@ const taskSchema = new Schema({
   },
 });
 
-const Task = mongoose.model('Task', userSchema);
+const Task = mongoose.model('Task', taskSchema);
 module.exports = Task;

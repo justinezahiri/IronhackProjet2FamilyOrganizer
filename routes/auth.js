@@ -2,7 +2,11 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const Task = require("../models/Task");
 const nodemailer = require("nodemailer");
+
+// Pour LOGIN
+const ensureLogin = require("connect-ensure-login");
 
 
 // Bcrypt to encrypt passwords
@@ -10,29 +14,6 @@ const bcrypt = require("bcrypt-nodejs");
 const bcryptSalt = 10;
 
 
-// ROUTE LOGIN 
-router.get("/login", (req, res, next) => {
-  res.render("auth/login");
-});
-
-router.post("/login", passport.authenticate("local", {
-  successRedirect: "/",
-  failureRedirect: "auth/login",
-  failureFlash: true,
-  passReqToCallback: true
-}));
-
-// ROUTE VERS PROFIL ID
-  router.get('/login/:id', (req, res, next) => {
-    let id = req.params.id;
-    User.findOne({'_id': id})
-      .then(user => {
-        res.render("auth/id", { user })
-      })
-      .catch(error => {
-        console.log(error)
-      })
-  });
 
 // SignUp
 router.get("/signup", (req, res, next) => {
@@ -41,17 +22,25 @@ router.get("/signup", (req, res, next) => {
 
 router.post("/signup", (req, res, next) => {
   const username = req.body.username;
-  const password = req.body.password;
   const email = req.body.email;
-  if(username === "" || password === "") {
-    res.render("auth/signup", { message: "Indicate username and password" });
+  const password = req.body.password;
+  if (username === "" || password === "") {
+    res.render("auth/signup", {
+      message: "Indicate username and password"
+    });
     return;
   }
+  const role = req.body.role;
+  const color = req.body.color
 
   // create new user 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({
+    email
+  }, "email", (err, user) => {
     if (user !== null) {
-      res.render("auth/signup", { message: "The username already exists" });
+      res.render("auth/signup", {
+        message: "The email already exists"
+      });
       return;
     }
 
@@ -60,74 +49,109 @@ router.post("/signup", (req, res, next) => {
 
     const newUser = new User({
       username,
+      email,
       password: hashPass,
-      confirmationCode,
-      email
+      role,
+      color
     });
 
     newUser.save()
-    .then(() => {
-      // user is now persisted into DB, let's send him a confirmation email
-      let { email, subject, message } = req.body;
-      let transporter = nodemailer.createTransport({
-        service: 'outlook',
-        auth: {
-          user: process.env.user,
-          pass: process.env.pass 
-        }
-      });
-      transporter.sendMail({
-        from: '"Justar 👻" <justar2019@outlook.fr>',
-        to: email, 
-        subject: "please confirm your account", 
-        text: message,
-        html: `<b>http://localhost:3000/auth/confirm/${confirmationCode}</b>`
+      .then(() => {
+        // user is now persisted into DB, let's send him a welcome email
+        let {
+          email,
+          subject,
+          message
+        } = req.body;
+        let transporter = nodemailer.createTransport({
+          service: 'hotmail',
+          auth: {
+            user: 'justar2019@outlook.fr',
+            pass: 'ironhack75'
+          }
+        });
+        console.log(1)
+        transporter.sendMail({
+            from: '"Justar 👻" <justar2019@outlook.fr>',
+            to: email,
+            subject: "Welcome to My Tribe",
+            text: "welcome",
+            html: `Welcome to My Tribe, you have successfully created your account! <br> </br>
+          You can login there: 
+            <b>http://localhost:3000/login</b>`
+          })
+          .then(message => {
+            console.log('ok email')
+            res.render('tribe', {
+              email
+            })
+          })
+          .catch(error => {
+            console.log(error);
+            res.send('Nok email')
+          });
       })
-      .then(message=> {
-        res.send('ok email')
-        res.render('auth/message', {email})
+      .catch(err => {
+        console.log(err)
+        res.render("auth/signup", {
+          message: "Something went wrong"
+        });
       })
-      .catch(error => {
-        console.log(error);
-        res.send('Nok email')
-      });
-    })
-    .catch(err => {
-      res.send('nok save')
-      res.render("auth/signup", { message: "Something went wrong" });
-    })
   });
 });
 
 router.post('/message', (req, res, next) => {
-  let { email, subject, message } = req.body;
+  let {
+    email,
+    subject,
+    message
+  } = req.body;
   let transporter = nodemailer.createTransport({
     service: 'outlook',
     auth: {
       user: 'justar2019',
-      pass: 'ironhack75' 
+      pass: 'ironhack75'
     }
   });
-    transporter.sendMail({
+  transporter.sendMail({
       from: '"Justar 👻" <justar2019@outlook.fr>',
-      to: email, 
-      subject: subject, 
-      text: message,
+      to: email,
+      subject: "Welcome to My Tribe",
+      text: "Welcome to My Tribe",
       html: `<b>${message}</b>`
     })
-    .then(message=> res.render('auth/message', {email, subject, message}))
+    .then(message => res.render('auth/message', {
+      email,
+      subject,
+      message
+    }))
     .catch(error => console.log(error));
-  });
+});
 
 
 
+// ROUTE LOGIN 
+router.get("/login", (req, res, next) => {
+  res.render("auth/login");
+});
+
+
+router.post("/login", passport.authenticate("local", {
+  successRedirect: "/task",
+  failureRedirect: "/login",
+  failureFlash: true,
+  passReqToCallback: true
+}));
+
+router.get("/task", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("task/index", { user: req.user });
+});
 
 
 
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/");
+  res.redirect("/login");
 });
-
 
 module.exports = router;
