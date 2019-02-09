@@ -1,14 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>{{title}}</title>
+
+  <link rel="icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
+  <link rel="stylesheet" href="https://static.winnie.com/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://winnie.com/static/577410c/css/winnie.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+</head>
+<body>
+
+  <nav id="navbar" class="navbar">
+    <a class="logo">MyTribe</a>
+  </nav>
+
+<div id="modal" class="content">
+    <div id="modal-login" class="modal" data-event="Login" style="display:block" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+            <!--<span class="avatar"></span>-->
+            <h2>Log In</h2>
+
+
+            <form action="/login" method="POST" id="form-signup">
+              <input type='hidden' name='#' value='#' />
+
+              <div class="form-group">
+                <label for="username">
+                  <h4>Name</h4>
+                  <input class="form-control" type="text" name="username" id="username" value="" placeholder="Enter your name"
+                    autofocus>
+                </label>
+                <span class="error"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="password">
+                  <h4>Password</h4>
+                  <input id="password" class="form-control" type="password" name="password" value="" placeholder="Enter your password">
+                </label>
+                <span class="error"></span>
+              </div>
+
+              <button class="btn btn-submit" type="submit">Log In</button>
+            </form>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>
+
+{{!-- 
 <form action="/login" method="POST">
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" name="username">
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" name="password">
-  </div>
-  <div>
-    <button class="btn btn-submit" type="submit">Log In</button>
-      {{!-- <a href="/login/{{this._id}}">Log In</a> --}}
-  </div>
-</form>
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" name="username">
+    </div>
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" name="password">
+    </div>
+    <div>
+      <button class="btn btn-submit" type="submit">Log in</button>
+    </div>
+</form>  --}}

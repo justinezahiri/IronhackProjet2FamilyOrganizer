@@ -1,29 +1,72 @@
-<h2>Your Tribe</h2>
+<!DOCTYPE html>
+<html lang="en">
 
-<form action="/createTribe" method="POST">
-  
-  <label for="name">Name</label>
-  <input id="name" type="text" name="name" placeholder="My Tribe">
-  
-  <br><br>
-  
-  <!--ADD A MEMBER-->
-  <div class="members">
-    <label>
-      Add Member
-      <input type="text" name="members[]" placeholder="name1">
-    </label>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <label>
-      Add Member
-      <input type="text" name="members[]" placeholder="name2">
-    </label>
+  <title>{{title}}</title>
 
-    
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700,700i">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://winnie.com/static/577410c/css/winnie.css">
+  <link rel="stylesheet" href="stylesheets/style.css">
+
+</head>
+
+<body>
+
+  <nav id="navbar" class="navbar">
+    <a class="logo">MyTribe</a>
+  </nav>
+
+  <div id="modal" class="content">
+    <div id="modal-login" class="modal" style="display:block" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-body">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+
+
+
+            <h2>Your Tribe</h2>
+
+            <form action="/createTribe" method="POST">
+
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input class="form-control" id="name" type="text" name="name"  placeholder="My Tribe">
+              </div>
+
+              <!--ADD A MEMBER-->
+              <div class="form-group">
+                <div class="members">
+                  <label>
+                    Member1
+                    <input class="form-control" type="text" name="membername[]" placeholder="member1">
+                  </label>
+
+                  <label>
+                    Member2
+                    <input class="form-control" type="text" name="membername[]" placeholder="member2">
+                  </label>
+                </div>
+
+
+              </div>
+              <a href="javascript:void 0;" id="add-member">add more members</a>
+          <p>
+            <button class="btn btn-submit" type="submit">create my tribe</button>
+          </p>
+          </form>
+        </div>
+      </div>
+    </div>
   </div>
-  <a href="javascript:void 0;" id="add-member">add another</a>
+  </div>
+</body>
 
-  <p>
-    <button>Create my tribe</button>
-  </p>
-</form>
+</html>

@@ -1,0 +1,18 @@
+<h1>Tasks</h1>
+
+{{#if user}}
+  <div>
+    <h1>Welcome {{ user.username}}</h1>
+{{/if}}
+
+{{#each task}} <h1>This is your tasks</h1>
+  <p>{{this.task}}
+    <a href="/task/{{this.id}}"> See </a> </p>
+  <form action="/task/{{this.id}}/delete" method="post">
+  <button type="submit">DELETE</button> </form> 
+  <form action="/task/{{this.id}}/edit" method="get">
+  <button type="submit">EDIT</button>
+  </form> 
+{{/each}}
+
+<a href="/task/new"> <button type="submit">New task</button> </a>
