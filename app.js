@@ -60,4 +60,7 @@ app.use('/', authRoutes);
 const tribe = require('./routes/tribe');
 app.use('/', tribe);
 
+const task = require('./routes/task');
+app.use('/', task);
+
 module.exports = app;

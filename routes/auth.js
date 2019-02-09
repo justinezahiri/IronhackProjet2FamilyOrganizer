@@ -136,14 +136,11 @@ router.post('/message', (req, res, next) => {
 });
 
 
-
-
-
-
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
 });
+
 
 // // ROUTE VERS PROFIL ID
 // router.get('/login/:_id', (req, res, next) => {
