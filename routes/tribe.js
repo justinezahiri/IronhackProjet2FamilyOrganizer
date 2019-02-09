@@ -41,15 +41,6 @@ router.post('/createTribe', (req, res, next) => {
         //res.redirect('/tribe');
       });
   });
-  
-  // const newTribe = new Tribe ({ name, membername })
-  // newTribe.save()
-  // .then((tribe) => {
-  //   res.redirect('/tribe');
-  // })
-  // .catch((error) => {
-  //   console.log(error);
-  // })
 });
 
 module.exports = router;

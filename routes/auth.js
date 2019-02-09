@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require('passport');
 const router = express.Router();
 const User = require("../models/User");
+const Task = require("../models/Task");
 const nodemailer = require("nodemailer");
 
 // Pour LOGIN
@@ -9,7 +10,7 @@ const ensureLogin = require("connect-ensure-login");
 
 
 // Bcrypt to encrypt passwords
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcrypt-nodejs");
 const bcryptSalt = 10;
 
 
@@ -136,14 +137,14 @@ router.get("/login", (req, res, next) => {
 
 
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/dashboard",
+  successRedirect: "/task",
   failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }));
 
-router.get("/dashboard", ensureLogin.ensureLoggedIn(), (req, res) => {
-  res.render("auth/dashboard", { user: req.user });
+router.get("/task", ensureLogin.ensureLoggedIn(), (req, res) => {
+  res.render("task/index", { user: req.user });
 });
 
 

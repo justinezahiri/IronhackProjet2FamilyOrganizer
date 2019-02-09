@@ -121,10 +121,20 @@ section.families > .container > div {
     text-align: left;
   }
 }
+
 section.families .sticker {
   width: 100px;
   height: 100px;
 }
+
+section.families .sticker-family{
+background-image: url("../images/icone2.png");
+background-repeat: no-repeat;
+background-size: cover;
+width: 100px;
+height: 100px;
+}
+
 @media (max-width: 767px) {
   section.families .sticker {
     position: absolute;

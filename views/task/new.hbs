@@ -1,13 +1,13 @@
 <!DOCTYPE html>
+
 <html lang="en">
 
 <head>
+
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
   <title>{{title}}</title>
-
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
   <link rel="stylesheet" href="https://static.winnie.com/css/bootstrap.min.css">
@@ -24,7 +24,6 @@
 </head>
 
 <body>
-
   <nav id="navbar" class="navbar">
     <a class="logo">MyTribe</a>
   </nav>
@@ -37,94 +36,93 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
             <!--<span class="avatar"></span>-->
-            <h2>Create your account</h2>
 
-            <form id="form-facebook" action="/login" method="post">
+            <h1>Create your task</h1>
+
+            <form action="/task/new" method="POST" id="form-task">
+
               <input type='hidden' name='#' value='#' />
-              <input type="hidden" name="token" value="">
-              <button class="btn btn-facebook" type="submit"><i></i>Continue with Facebook</button>
-            </form>
-
-            <div class="or">
-              <hr>
-              <span>OR</span>
-              <hr>
-            </div>
-
-            <form action="/signup" method="POST" id="form-signup">
-              <input type='hidden' name='#' value='#' />
-
               <div class="form-group">
-                <label for="username">
-                  <h4>Name</h4>
-                  <input class="form-control" type="text" name="username" id="username" value="" placeholder="Enter your name"
+                <label for="task">
+                  <h4>Task name</h4>
+                  <input class="form-control" type="text" name="task" id="task" value="" placeholder="Enter your task"
                     autofocus>
                 </label>
+
                 <span class="error"></span>
               </div>
 
-
               <div class="form-group">
-                <label for="email">
-                  <h4>Email</h4>
-                  <input id="email" class="form-control" type="email" name="email" value="" placeholder="Enter email address"
+                <label for="description">
+                  <h4>Description</h4>
+                  <input id="description" class="form-control" type="text" name="description" value="" placeholder="Describe your task"
                     autofocus>
                 </label>
+
                 <span class="error"></span>
               </div>
+
               {{#if message }}
               <div class="error-message">{{ message }}</div>
               {{/if}}
 
-
               <div class="form-group">
-                <label for="password">
-                  <h4>Password</h4>
-                  <input id="password" class="form-control" type="password" name="password" value="" placeholder="Enter your password">
+                <label for="assignedTo">
+                  <h4>Assigned to :</h4>
+                  <select name="assignedTo">
+                    {{#each members}}
+                    <option value="{{this.id}}">{{this.name}}</option>
+                    {{/each}}
+                  </select>
                 </label>
                 <span class="error"></span>
               </div>
 
               <div class="form-group">
-                <h4>Your role :</h4>
-                <label for="parent">
-                  <h4>Parent</h4>
-                </label>
-                <input id="parent" class="form-control" type="radio" name="parent" checked>
-                </br>
-                <label for="kid">
-                  <h4>Kid</h4>
-                </label>
-                <input id="kid" class="form-control" type="radio" name="kid">
-              </div>
-
-              <div class="form-group">
-                <label for="color">
-                  <h4>Pick your color</h4>
-                  <input class="form-control" type="color" name="color" id="color" value="#e66465" autofocus>
+                <label for="date">
+                  <h4>Due date :</h4>
+                  <input id="date" class="form-control" type="date" name="date" checked>
                 </label>
                 <span class="error"></span>
               </div>
 
-              <button class="btn btn-submit" type="submit">Sign up</button>
+              <div class="form-group">
+                <select name="status">
+                  <h4>Status of your task</h4>
+                  <option value="todo">To Do</option>
+                  <option value="doing">Doing</option>
+                  <option value="done">Done</option>
+                </select>
+                <span class="error"></span>
+              </div>
+
+              <button class="btn btn-submit" type="submit">Create a task</button>
             </form>
-
-            <div class="instructions">
-              <p>
-                By continuing, I agree that I have read and agree to the
-                <a href="/terms" target="_blank">Terms of Use</a> and
-                <a href="/privacy" target="_blank">Privacy Policy</a>.
-              </p>
-              <p><a href="/reset-password">Forgot Password?</a></p>
-              <p>Already have an account? <a href="/login" rel="nofollow">Login</a></p>
-            </div>
-
           </div>
         </div>
       </div>
     </div>
-  </div>
-
+ </div>
 </body>
-
 </html>
+
+{{!-- <form action="/task/new" method="post">
+  <label for="">Name:</label>
+  <input type="text" name="task">
+
+  <label for="">Description:</label>
+  <input type="text" name="description">
+
+  <label for="">¨Assigned to:</label>
+  <select name="assignedTo">
+    {{#each members}}
+    <option value="{{this.id}}">{{this.name}}</option>
+    {{/each}}
+  </select>
+
+
+  {{!-- <label for="">¨CatchPhrase:</label>
+  <input type="text" name="catchPhrase"> --}}
+
+  <button type="submit">ADD</button>
+</form> --}}
