@@ -18,7 +18,7 @@ const app = express();
 const mongoose = require("mongoose");
 mongoose
   // .connect('mongodb://localhost/mytribe', {useNewUrlParser: true})
-  .connect('process.env.MONGODB_URI', {useNewUrlParser: true})
+  .connect(process.env.MONGODB_URI, {useNewUrlParser: true})
 
   .then(x => {
     console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`)
@@ -57,7 +57,7 @@ app.set('view engine', 'hbs');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
   // try true if it doesn't work
 }));
 app.use(cookieParser());
