@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <title>MyTribe</title>
+  <title>MyTribe - Create new task</title>
 
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
@@ -23,10 +23,23 @@
 
 </head>
 
+
 <body>
 
-  <nav id="navbar" class="navbar">
-    <a class="logo">MyTribe</a>
+  <nav id="navbar" class="navbar navbar-dashboard">
+    <div class="container">
+      <a class="logo">MyTribe</a>
+      <ul class="nav navbar-nav">
+		<li class="my-account">
+			<a class="btn" href="#">My Account</a>
+			<ul>
+				<li><a href="#">Modify my profil</a></li>
+				<li><a href="#">Modify my family</a></li>
+			</ul>
+		</li>
+        <li><a class="btn" href="/login">Log out</a></li>
+      </ul>
+    </div>
   </nav>
 
   <div id="modal" class="content">
@@ -37,7 +50,7 @@
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
             <!--<span class="avatar"></span>-->
-            <h1>La liste des taches</h1>
+            <h2>Create a new task</h2>
 
             <form action="/tasks" method="POST" id="form-task">
               <input type='hidden' name='#' value='#' />

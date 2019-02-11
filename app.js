@@ -139,8 +139,6 @@ app.use(function (err, req, res, next) {
 // app.locals.title = 'Express - Generated with IronGenerator';
 app.locals.title = 'My Tribe';
 
-
-const task = require('./routes/task');
 app.use('/', task);
 
 module.exports = app;
