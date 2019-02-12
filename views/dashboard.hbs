@@ -1,12 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   
-  <title>My Tribal - Sign In</title>
+  <title>MyTribe - Dashboard</title>
 
   <link rel="icon" href="/favicon.ico">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180">
@@ -16,7 +15,7 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://winnie.com/static/577410c/css/winnie.css">
-  <link rel="stylesheet" href="stylesheets/style.css">
+  <link rel="stylesheet" href="/stylesheets/style.css">
 
   <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -26,49 +25,40 @@
 </head>
 <body>
 
-  <nav id="navbar" class="navbar">
-      <a class="logo">MYTRIBE</a>
+  <nav id="navbar" class="navbar navbar-dashboard">
+    <div class="container">
+      <a class="logo">MyTribe</a>
+      <ul class="nav navbar-nav">
+		<li class="my-account">
+			<a class="btn" href="#">My Account</a>
+			<ul>
+				<li><a href="#">Modify my profil</a></li>
+				<li><a href="#">Modify my family</a></li>
+			</ul>
+		</li>
+        <li><a class="btn" href="/login">Log out</a></li>
+      </ul>
+    </div>
   </nav>
 
   <div id="modal" class="content">
     <div id="modal-login" class="modal" data-event="Login" style="display:block" tabindex="-1" role="dialog">
   <div class="modal-dialog" role="document">
-    <div class="modal-content">
+    <div class="modal-content dashboard">
       <div class="modal-body">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
         <!--<span class="avatar"></span>-->
-        <h2>Welcome back!</h2>
-
-        <form id="form-login" action="/login" method="post">
-          <input type='hidden' name='#' value='#' />
-                 
-          <div class="form-group">
-            <label><h4>Email</h4>
-              <input class="form-control" type="text" name="email" value="" placeholder="Enter email address" autofocus>
-            </label>
-            <span class="error"></span>
+        <h2>Hello Tribe {{tribe}} !</h2>
+        <br/>
+        <br/>
+            <a class="btn-dashboard" href="/tasks">Your Tribe's tasks</a>
+            <br/>
+            <br/>
+            <a class="btn-dashboard" href="/calendar">Your Tribe's Calendar</a>
           </div>
-          
-          <div class="form-group">
-            <label><h4>Password</h4>
-              <input class="form-control" type="password" name="password" value="" placeholder="Enter your password">
-            </label>
-            <span class="error"></span>
-          </div>
-          
-          <button class="btn btn-submit" type="submit">Sign In</button>
         </form>
         
-        <div class="instructions">
-          <p>
-            By continuing, I agree that I have read and agree to the
-            <a href="/terms" target="_blank">Terms of Use</a> and
-            <a href="/privacy" target="_blank">Privacy Policy</a>.
-          </p>
-          <p><a href="/reset-password">Forgot Password?</a></p>
-          <p>Need an account? <a href="/signup?next=" rel="nofollow">Sign Up</a></p>
-        </div>
 
       </div>
     </div>
