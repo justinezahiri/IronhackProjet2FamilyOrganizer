@@ -28,6 +28,7 @@ router.post('/createTribe', (req, res, next) => {
   Promise.all(promises).then(function(users){
     // 
     console.log(users);
+    users.push(req.user._id)
     const newTribe = new Tribe({
       name: name,
       members: users
@@ -37,8 +38,7 @@ router.post('/createTribe', (req, res, next) => {
         next(error);
       })
       .then(function (tribe) {
-        res.send('save tribe ok')
-        //res.redirect('/tribe');
+        res.redirect('/task');
       });
   });
 });

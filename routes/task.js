@@ -4,28 +4,48 @@ const User    = require('../models/User');
 const Tribe   = require('../models/Tribe');
 const Task   = require('../models/Task');
 
-// router.get('/task', (req, res, next) => {
-//   Task.find()
-//     .then(task => {
-//       res.render("task/index", { task });
-//     })
-//     .catch(error => {
-//       res.render("index");
-//     })
-// })
+router.get('/task', (req, res, next) => {
+  Task.find()
+  .populate("assignedTo")
+  .then((myCreatedTasks) => {
+    res.locals.ArrayOfCreatedTasks = myCreatedTasks;
+    res.render("task/index", { task });
+
+  })
+  // .populate("task")
+  //   .then(task => {
+  //     res.render("task/index", { task });
+  //   })
+  //   .catch(error => {
+  //     res.render("index");
+  //   })
+})
 
 router.get('/task/new', (req, res, next) => {
-  res.render("task/new", {
-    members: [
-      {name: 'Georges', id: '1234'},
-      {name: 'Janine', id: '12345'}
-    ]
+  Tribe.findOne({members:req.user._id}).populate("members")
+  .then(tribe => {
+    console.log(tribe);
+    res.render("task/new", {
+      tribe
+    })
   })
 })
 
 router.post('/task/new', (req, res, next) => {
-  const { task, description } = req.body;
-  const newTask = new Task({task, description})
+  const { task, description, assignedTo, createdBy, date, status} = req.body;
+
+  // const task = req.body.task;
+  // const description = req.body.description;
+  // const assignedTo = req.body.assignedTo;
+  
+  const newTask = new Task({
+    task: task,
+    description: description,
+    assignedTo: assignedTo,
+    createdBy : createdBy,
+    date : date,
+    status : status
+  })
   newTask.save()
   .then(task => {
     res.redirect('/task')
@@ -35,16 +55,6 @@ router.post('/task/new', (req, res, next) => {
   })
 });
 
-// router.get('/task/:id', (req, res, next) => {
-//   let taskId = req.params.id;
-//   Task.findOne({'_id': taskId})
-//     .then(task => {
-//       res.render("task/id", { task })
-//     })
-//     .catch(error => {
-//       console.log(error)
-//     })
-// });
 
 router.post('/task/:id/delete', (req, res, next) => {
   let taskId = req.params.id;
@@ -80,9 +90,6 @@ router.post('/task/:id/edit', (req, res, next) => {
      })
  });
 
-
-
-
  router.get('/task', (req, res, next) => {  //pour afficher le detail par celebrity dans show.hbs
   let userId = req.params.id;
   User.findOne({_id: userId}) //attention syntaxe
@@ -103,3 +110,4 @@ router.post('/task/:id/edit', (req, res, next) => {
 //   });
 
  module.exports = router;
+
